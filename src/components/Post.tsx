@@ -70,7 +70,7 @@ const Post: React.FC = () => {
   return (
     <div>
     <div className='create-post'>
-        <h1>Create Post</h1>
+        <h1>Create Product</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
