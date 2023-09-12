@@ -17,7 +17,7 @@ const PostList = () => {
                 }}>
                 <h3>Title: {post.title}</h3>
                 <p>Price: {post.price}</p>
-                {/* <p>Description: {post.description}</p> */}
+                <p>Description: {post.description}</p>
               </div>
             )
           })}

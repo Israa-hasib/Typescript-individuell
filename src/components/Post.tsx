@@ -76,8 +76,8 @@ const Post: React.FC = () => {
         <div>
           <label htmlFor="product-name">Title:</label>
           <input
-            id="Title"
-            name="Title"
+            id="title"
+            name="title"
             value={newPost.title}
             onChange={handleInputChange}
           />
@@ -96,7 +96,7 @@ const Post: React.FC = () => {
           <input
             id="description"
             name="description"
-            value={newPost.creationDate}
+            value={newPost.description}
             onChange={handleInputChange}
           />
         </div>
