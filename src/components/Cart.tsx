@@ -1,12 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
 
-interface Product {
-    id: number;
-    name: string;
-    price: number;
-  }
-
 const Cart: React.FC = () => {
   const { state, dispatch } = useContext(CartContext);
 

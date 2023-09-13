@@ -28,10 +28,6 @@ const Post: React.FC = () => {
     setNewPost({
       ...newPost,
       [name]: value,
-      creator: {
-        ...newPost.creator,
-        [name]: value,
-      },
     });
   };
 

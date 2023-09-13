@@ -1,42 +1,15 @@
-import React, { createContext, useReducer, Dispatch, ReactNode } from 'react';
+import React, { createContext, useReducer, Dispatch, ReactNode, useContext, useEffect, useRef } from 'react';
 
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
-
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
-
-interface CartState {
-  cartItems: CartItem[];
-}
-
-interface Action {
-  type: string;
-  payload?: any;
-}
 
 const initialState: CartState = {
-  cartItems: [{
-    product: {
-      id: 0,
-      name: "Name",
-      price: 300
-    },
-    quantity: 1
-  }],
+  cartItems: [],
 };
 
 const cartReducer = (state: CartState, action: Action): CartState => {
   switch (action.type) {
     case 'ADD_PRODUCT':
-      const newItem = action.payload;
-      const existingItem = state.cartItems.find(item => item.product.id === newItem.product.id);
+      const newProduct = action.payload;
+      const existingItem = state.cartItems.find(item => item.product.id === newProduct.id);
 
       if (existingItem) {
         return {
@@ -50,7 +23,7 @@ const cartReducer = (state: CartState, action: Action): CartState => {
       } else {
         return {
           ...state,
-          cartItems: [...state.cartItems, { product: newItem.product, quantity: 1 }],
+          cartItems: [...state.cartItems, { product: newProduct, quantity: 1 }],
         };
       }
 
@@ -59,6 +32,12 @@ const cartReducer = (state: CartState, action: Action): CartState => {
         ...state,
         cartItems: state.cartItems.filter(item => item.product.id !== action.payload),
       };
+
+    case 'SET_CART':
+      return{
+        ...state,
+        cartItems: [...action.payload]
+      }
 
     case 'INCREMENT_QUANTITY':
       return {
@@ -92,8 +71,44 @@ interface CartProviderProps {
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
+  console.log("CART STATE", state)
+  const hasFetched = useRef(false)
+  useEffect(()=>{
+    if(hasFetched.current){
+      localStorage.setItem('cart', JSON.stringify(state.cartItems));
+    }
+
+  },[
+    state.cartItems
+  ]
+  )
+  useEffect(() => {
+    dispatch({
+        type: "SET_CART",
+        payload: getCartFromLocalStorage()
+    })
+    setTimeout(( )=> {
+      hasFetched.current = true
+    }, 3000)
+},[])
+
+const getCartFromLocalStorage = () => {
+  const storeData = localStorage.getItem(`cart`);
+  if (!!storeData){
+    console.log("Store data", storeData)
+    const dataArray: PostData []  = JSON.parse(storeData) || []
+    return dataArray
+}
+return []
+}
+
 
   return <CartContext.Provider value={{ state, dispatch }}>{children}</CartContext.Provider>;
 };
 
-export { CartContext, CartProvider };
+const useCart =()=>{
+  const cart = useContext(CartContext)
+  return cart
+}
+
+export { CartContext, CartProvider, useCart};
