@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Post from './components/Post';
-import PostList from './components/PostList';
-import ThreadDetailView from './pages/ThreadDetailView';
+import Post from './components/Add';
+import PostList from './components/Products';
+import ThreadDetailView from './pages/Detail';
 import React from 'react';
 // import { CartProvider } from './components/CartContext';
 // import Cart from './components/CartContext';  

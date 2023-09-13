@@ -1,5 +1,3 @@
-type PostCategory = "THREAD" | "QNA";
-
 interface PostData {
   id: number;
   title: string;
@@ -29,9 +27,3 @@ interface Action {
   type: string;
   payload?: any;
 }
-
-// interface QNAPost extends PostData {
-//   category: "QNA";
-//   isAnswered: boolean;
-//   commentAnswerId?: number;
-// }
