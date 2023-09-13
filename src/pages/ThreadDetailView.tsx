@@ -32,7 +32,7 @@ const ThreadDetailView = () => {
   }
   
 
-  if (!post) return <div>Posten hittades inte</div>;
+  if (!post) return <div>Did not find</div>;
 
   return (
     <div>
