@@ -18,7 +18,7 @@ const PostList = () => {
                 <img src={post.imageUrl} className="img-fluid"  /> 
                 <h3>Title: {post.title} </h3>
                 <p>Price: {post.price} kr</p>
-                <p>Description: {post.description}</p>
+              
               </div>
             )
           })}
