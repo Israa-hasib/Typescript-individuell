@@ -8,14 +8,9 @@ const Post: React.FC = () => {
     id: 0,
     title: '',
     price:'',
-    category: 'THREAD',
-    creationDate: '',
     description: '',
-    creator: {
-      id: 0,
-      name: '',
-      userName: '',
-    },
+    imageUrl: '',
+    
   });
 
   useEffect(() => {
@@ -35,7 +30,7 @@ const Post: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // Prevent the default form submission behavior
   
-    if (newPost.title && newPost.description && newPost.category) {
+    if (newPost.title && newPost.description && newPost.imageUrl) {
       const newPostData: PostData = { ...newPost, id: Date.now() };
       const updatedPosts = [...posts, newPostData];
   
@@ -51,13 +46,8 @@ const Post: React.FC = () => {
         title: '',
         price: '',
         description: '',
-        category: 'THREAD', // Set a default category if needed
-        creationDate: '',
-        creator: {
-          id: 0,
-          name: '',
-          userName: '',
-        },
+        imageUrl: '',
+        
       });
     }
   };
@@ -69,6 +59,15 @@ const Post: React.FC = () => {
     <div className='create-product'>
         <h1>Create Product</h1>
       <form onSubmit={handleSubmit}>
+      <div>
+          <label htmlFor="imageUrl">Image Url</label>
+          <input
+            id="imageUrl"
+            name="imageUrl"
+            value={newPost.imageUrl}
+            onChange={handleInputChange}
+          />
+        </div>
         <div>
           <label htmlFor="product-name">Title:</label>
           <input

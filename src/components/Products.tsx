@@ -10,13 +10,14 @@ const PostList = () => {
       <div>
         <div>
           {savedPosts.map(function(post){
-            console.log("POSTS", post.creator)
+            console.log("POSTS")
             return(
               <div key={post.id} className="post" id="post" onClick={() =>{
                 navigate(`/post/${post.id}`)
                 }}>
-                <h3>Title: {post.title}</h3>
-                <p>Price: {post.price}</p>
+                <img src={post.imageUrl} className="img-fluid"  /> 
+                <h3>Title: {post.title} </h3>
+                <p>Price: {post.price} kr</p>
                 <p>Description: {post.description}</p>
               </div>
             )

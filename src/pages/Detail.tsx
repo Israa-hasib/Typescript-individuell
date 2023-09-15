@@ -38,8 +38,9 @@ const ThreadDetailView = () => {
     <div>
       
     <div className='post' id='post' key={post.id}>  
+                <img src={post.imageUrl} className="img-fluid"  />
                 <h3>Title: {post.title}</h3>
-                <p>Price: {post.price}</p>
+                <p>Price: {post.price} kr</p>
                 <p>Description: {post.description}</p>
                 <button onClick={addToCart}>Add to cart</button>
     </div>

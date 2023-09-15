@@ -146,7 +146,7 @@ form {
   flex-wrap: wrap;
   align-items: baseline;
   width: 800px;
-  height: 200px;
+  height: 300px;
   margin: 30px;
   margin-left: 300px;
   padding-left: 30px;
@@ -163,3 +163,15 @@ h3 {
 h1 {
   font-family: 'Times New Roman', Times, serif;
 }
+
+img{
+  width: 270px;
+  height: 270px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* .cart{
+  display: flex;
+  justify-content: center;
+} */

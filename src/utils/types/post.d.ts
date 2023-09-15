@@ -2,16 +2,15 @@ interface PostData {
   id: number;
   title: string;
   price: string;
-  category: PostCategory;
-  creationDate: string;
   description: string;
-  creator: User;
+  imageUrl: string;
 }
 
 interface Product {
   id: number;
-  name: string;
+  title: string;
   price: number;
+  imageUrl: string;
 }
 
 interface CartItem {
